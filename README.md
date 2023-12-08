@@ -19,16 +19,16 @@ python manage.py test
 POST /api/vendors/: Create a new vendor profile.
 
 ### List all vendors
-### GET /api/vendors/: Retrieve a list of all vendors.
+GET /api/vendors/: Retrieve a list of all vendors.
 
 ### Retrieve a specific vendor's details
-### GET /api/vendors/{vendor_id}/: Retrieve details of a specific vendor.
+GET /api/vendors/{vendor_id}/: Retrieve details of a specific vendor.
 
 ### Update a vendor's details
-### PUT /api/vendors/{vendor_id}/: Update details of a specific vendor.
+PUT /api/vendors/{vendor_id}/: Update details of a specific vendor.
 
 ### Delete a vendor
-### DELETE /api/vendors/{vendor_id}/: Delete a specific vendor.
+DELETE /api/vendors/{vendor_id}/: Delete a specific vendor.
 
 ## Purchase Order Tracking
 
