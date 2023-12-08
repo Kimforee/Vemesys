@@ -11,13 +11,11 @@ Welcome to the Vendor Management System (VMS) with Performance Metrics, a Django
 4. Install dependencies: `pip install -r requirements.txt`
 5. Apply migrations: `python manage.py migrate`
 
-Testing:
-
 # Test Execution
 python manage.py test
 
 Vendor Profile Management
-Create a new vendor
+`Create a new vendor
 POST /api/vendors/: Create a new vendor profile.
 
 List all vendors
