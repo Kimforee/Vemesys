@@ -1,9 +1,4 @@
 from django.test import TestCase
-
-# Create your tests here.
-# tests.py
-
-from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
 from .models import Vendor, PurchaseOrder
@@ -17,13 +12,16 @@ class VendorManagementTests(TestCase):
 
     def test_create_vendor(self):
         data = {
-                'name': 'Vendor 1',
-                'contact_details': 'Contact details',
-                'address': 'Vendor address',
-                'vendor_code': 'V123'
-               }
+            "name": "Vendor 1",
+            "contact_details": "Contact details",
+            "address": "Vendor Address",
+            "vendor_code": "V123",
+            "on_time_delivery_rate": 0.0,
+            "quality_rating_avg": 0.0,    
+            "average_response_time": 0.0, 
+            "fulfillment_rate": 0.0       
+        }
         response = self.client.post(reverse('vendor-list-create'), data, format='json')
-        print(response.content)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Vendor.objects.count(), 1)
         self.assertEqual(Vendor.objects.get().name, 'Vendor 1')
@@ -32,10 +30,13 @@ class VendorManagementTests(TestCase):
         vendor = Vendor.objects.create(name='Vendor 2', 
                                        contact_details='Contact details', 
                                        address='Vendor address', 
-                                       vendor_code='V124')
+                                       vendor_code='V124',
+                                       on_time_delivery_rate=0.0,
+                                    quality_rating_avg=0.0,
+                                    average_response_time=0.0,
+                                    fulfillment_rate=0.0  )
 
         response = self.client.get(reverse('vendor-retrieve-update-delete', args=[vendor.id]))
-        print(response.content)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['name'], 'Vendor 2')
 
@@ -45,10 +46,10 @@ class VendorManagementTests(TestCase):
             contact_details='Contact details',
             address='Vendor address',
             vendor_code='V125',
-            on_time_delivery_rate=0.0,  # Provide a default value
-            quality_rating_avg=0.0,  # Provide a default value
-            average_response_time=0.0,  # Provide a default value
-            fulfillment_rate=0.0  # Provide a default value
+            on_time_delivery_rate=0.0, 
+            quality_rating_avg=0.0, 
+            average_response_time=0.0, 
+            fulfillment_rate=0.0 
         )
 
         po_data = {
@@ -67,7 +68,6 @@ class VendorManagementTests(TestCase):
             'issue_date': datetime.now().isoformat()
         }
         response = self.client.post(reverse('purchase-order-list-create'), po_data, format='json')
-        print(response.content)
         po_id = response.data['id']
 
         ack_response = self.client.post(reverse('acknowledge-purchase-order', args=[po_id]))
@@ -78,7 +78,11 @@ class VendorManagementTests(TestCase):
         vendor = Vendor.objects.create(name='Vendor 4', 
                                        contact_details='Contact details', 
                                        address='Vendor address', 
-                                       vendor_code='V126')
+                                       vendor_code='V126',
+                                       on_time_delivery_rate=0.0, 
+                                       quality_rating_avg=0.0, 
+                                       average_response_time=0.0, 
+                                       fulfillment_rate=0.0  )
 
         response = self.client.get(reverse('vendor-performance', args=[vendor.id]))
         self.assertEqual(response.status_code, status.HTTP_200_OK)

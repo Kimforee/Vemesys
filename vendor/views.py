@@ -31,13 +31,13 @@ def vendor_performance(request, vendor_id):
     vendor = Vendor.objects.get(pk=vendor_id)
     update_vendor_performance_metrics(vendor)
     serializer = VendorSerializer(vendor)
-    return Response(serializer.data)
-    # return Response({
-    # "on_time_delivery_rate": serializer.data["on_time_delivery_rate"],
-    # "quality_rating_avg": serializer.data["quality_rating_avg"],
-    # "average_response_time": serializer.data["average_response_time"],
-    # "fulfillment_rate": serializer.data["fulfillment_rate"]
-# })
+    # return Response(serializer.data)
+    return Response({
+    "on_time_delivery_rate": serializer.data["on_time_delivery_rate"],
+    "quality_rating_avg": serializer.data["quality_rating_avg"],
+    "average_response_time": serializer.data["average_response_time"],
+    "fulfillment_rate": serializer.data["fulfillment_rate"]
+})
 
 @api_view(['POST'])
 def acknowledge_purchase_order_view(request, po_id):
