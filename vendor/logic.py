@@ -10,8 +10,10 @@ def update_on_time_delivery_rate(vendor):
     completed_pos = PurchaseOrder.objects.filter(vendor=vendor, status='completed').exclude(delivery_date__gt=timezone.now())
     total_completed_pos = completed_pos.count()
     on_time_deliveries = completed_pos.filter(delivery_date__lte=F('acknowledgment_date'))
-    on_time_delivery_rate = (on_time_deliveries.count() / total_completed_pos) * 100 if total_completed_pos > 0 else 0
-    vendor.on_time_delivery_rate = on_time_delivery_rate
+    if total_completed_pos > 0:
+        on_time_delivery_rate = (on_time_deliveries.count() / total_completed_pos) * 100
+    else :
+      vendor.on_time_delivery_rate = 0
     vendor.save()
 
 def update_quality_rating_avg(vendor):
@@ -33,8 +35,10 @@ def update_average_response_time(vendor):
             output_field=DurationField()
         )
     ).aggregate(avg_response_time=Avg('time_diff'))['avg_response_time']
-
-    vendor.average_response_time = response_times.total_seconds() / pos_with_acknowledgment.count() if pos_with_acknowledgment.count() > 0 else 0
+    if pos_with_acknowledgment.count() > 0 : 
+       vendor.average_response_time = response_times.total_seconds() / pos_with_acknowledgment.count() 
+    else:
+       vendor.average_response_time = 0
     vendor.save()
 
 def update_fulfillment_rate(vendor):
