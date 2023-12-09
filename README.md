@@ -7,8 +7,8 @@ Welcome to the Vendor Management System (VMS) with Performance Metrics, a Django
 # Installation Steps
 1. Clone the repository: `git clone https://github.com/Kimforee/Vemesys.git`
 2. Create a virtual environment: `python -m venv venv`
-3. Activate the virtual environment: `source venv/bin/activate` (Linux/Mac) or `venv\Scripts\activate` (Windows) if an error occurs before this try -> `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted`
-4. Install dependencies: `pip install -r path/to/requirements.txt` (insert the path of requirements.txt file)
+3. Activate the virtual environment: `source venv/bin/activate` (Linux/Mac) or `venv/Scripts/activate` (Windows) if an error occurs before this try -> `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted`
+4. Install dependencies: `pip install -r ./requirements.txt` or `pip install -r path/to/requirements.txt`
 5. Apply migrations: `python manage.py migrate`
 
 # Test Execution
