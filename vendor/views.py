@@ -1,8 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-# views.py
-
 from rest_framework import generics, status
 from .models import Vendor, PurchaseOrder
 from .serializers import VendorSerializer, PurchaseOrderSerializer
