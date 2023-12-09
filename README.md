@@ -1,10 +1,12 @@
 # Vendor Management System
  Vendor Management System with Performance Metrics
 
-Introduction
+#### Introduction
 Welcome to the Vendor Management System (VMS) with Performance Metrics, a Django-based web application designed to streamline vendor-related operations and provide insightful performance metrics. This system serves as a comprehensive solution for managing vendor profiles, tracking purchase orders, and evaluating vendor performance.
 
 # Installation Steps
+Please ensure that you have Git and Python installed on your PC.
+
 1. Clone the repository: `git clone https://github.com/Kimforee/Vemesys.git`
 2. Create a virtual environment: `python -m venv venv`
 3. Activate the virtual environment: `source venv/bin/activate` (Linux/Mac) or `venv/Scripts/activate` (Windows) if an error occurs before this try -> `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted`
