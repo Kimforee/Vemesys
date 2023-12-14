@@ -16,6 +16,9 @@ Please ensure that you have Git and Python installed on your PC.
 # Test Execution
 `python manage.py test`
 
+# Run
+`python manage.py runserver`
+
 ## Vendor Profile Management
 ### Create a new vendor
 `POST /api/vendors/`: Create a new vendor profile.
